@@ -40,7 +40,9 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: process.env.NODE_ENV !== 'production' ? 'http://127.0.0.1:8080' : 'https://young-chamber-31001.herokuapp.com'
+  },
   /*
    ** Build configuration
    */
