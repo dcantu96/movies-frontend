@@ -14,8 +14,9 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "ant-design-vue": "^1.1.10",
     "@nuxtjs/axios": "^5.3.6",
+    "ant-design-vue": "^1.1.10",
+    "devour-client": "^2.0.27",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {

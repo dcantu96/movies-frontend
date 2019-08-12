@@ -1,33 +1,66 @@
 <template>
   <div>
-    <logo />
-    <h1 class="title">
-      quiniela-api-nuxt
-    </h1>
-    <h2 class="subtitle">
-      My groovy Nuxt.js project
-    </h2>
-    <div class="links">
-      <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-        Documentation
-      </a>
-      <a
-        href="https://github.com/nuxt/nuxt.js"
-        target="_blank"
-        class="button--grey"
-      >
-        GitHub
-      </a>
+    <div v-for="movie in data" v-bind:key="movie.id">
+      <Card :movie="movie" />
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import JsonApi from 'devour-client'
+import Card from '~/components/Card.vue'
 
 export default {
   components: {
-    Logo
+    Card
+  },
+  async asyncData({ $axios }) {
+    const jsonApi = new JsonApi({ apiUrl: $axios.defaults.baseURL })
+    jsonApi.define('movie', {
+      name: '',
+      duration: '',
+      actors: {
+        jsonApi: 'hasOne',
+        type: 'actors'
+      },
+      genre: {
+        jsonApi: 'hasOne',
+        type: 'genres'
+      },
+      director: {
+        jsonApi: 'hasOne',
+        type: 'directors'
+      }
+    })
+    jsonApi.define('actor', {
+      name: '',
+      movieActors: {
+        jsonApi: 'hasMany',
+        type: 'movieActors'
+      },
+      movies: {
+        jsonApi: 'hasMany',
+        type: 'movies'
+      }
+    })
+    jsonApi.define('genre', {
+      name: '',
+      movies: {
+        jsonApi: 'hasMany',
+        type: 'genres'
+      }
+    })
+    jsonApi.define('director', {
+      name: '',
+      movies: {
+        jsonApi: 'hasMany',
+        type: 'directors'
+      }
+    })
+    const { data } = await jsonApi.findAll('movies', {
+      include: 'actors,genre,director'
+    })
+    return { data }
   }
 }
 </script>
