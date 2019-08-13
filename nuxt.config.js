@@ -27,15 +27,22 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/antd-ui'],
+  plugins: [
+    '@/plugins/antd-ui',
+    '@/plugins/fuse',
+  ],
   /*
    ** Nuxt.js modules
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/toast'
   ],
+  toast: {
+    duration: 3000
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

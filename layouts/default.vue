@@ -3,7 +3,7 @@
     <Nav />
     <a-layout-content class="outer-container">
       <Breadcrumb />
-      <div class="content">
+      <div>
         <nuxt />
       </div>
     </a-layout-content>

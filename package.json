@@ -15,9 +15,12 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/toast": "^3.2.1",
     "ant-design-vue": "^1.1.10",
     "devour-client": "^2.0.27",
-    "nuxt": "^2.0.0"
+    "fuse.js": "^3.4.5",
+    "nuxt": "^2.0.0",
+    "vue-fuse": "^2.1.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

@@ -1,6 +1,6 @@
 <template>
   <a-card :title="movie.name">
-    <p>{{ movie.genre }}</p>
+    <p>{{ movie.genre.name }}</p>
   </a-card>
 </template>
 
