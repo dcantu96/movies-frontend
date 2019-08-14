@@ -34,6 +34,10 @@ export default {
         jsonApi: 'hasOne',
         type: 'actors'
       },
+      movieActors: {
+        jsonApi: 'hasMany',
+        type: 'movieActors'
+      },
       genre: {
         jsonApi: 'hasOne',
         type: 'genres'

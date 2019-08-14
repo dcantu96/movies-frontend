@@ -3,7 +3,7 @@
     <VueFuse
       placeholder="Search for movies"
       event-name="results"
-      :list="data"
+      :list="movies"
       :keys="['name']"
       style="width: 200px; marginBottom: 20px;"
     />
@@ -12,6 +12,15 @@
         New movie
       </a-button>
     </n-link>
+    <a-select
+      style="width: 200px"
+      placeholder="Filter by genre"
+      @change="filterByGenre"
+    >
+      <a-select-option v-for="genre in genres" :key="genre.id">
+        {{ genre.name }}
+      </a-select-option>
+    </a-select>
     <div class="grid">
       <div v-for="movie in results" :key="movie.id">
         <a-card :title="movie.name">
@@ -75,15 +84,30 @@ export default {
         type: 'directors'
       }
     })
-    const { data } = await jsonApi.findAll('movies', {
+    const movies = await jsonApi.findAll('movies', {
       include: 'actors,genre,director'
     })
-    return { data }
+    const genres = await jsonApi.findAll('genres')
+    return {
+      movies: movies.data,
+      genres: genres.data
+    }
   },
   created() {
     this.$on('results', (results) => {
       this.results = results
     })
+  },
+  methods: {
+    filterByGenre(value) {
+      const options = {
+        keys: ['genre.id'],
+        threshold: 0.0
+      }
+      this.$search(value, this.movies, options).then((results) => {
+        this.results = results
+      })
+    }
   }
 }
 </script>

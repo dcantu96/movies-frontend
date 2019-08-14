@@ -2,9 +2,21 @@
   <a-layout-header class="nav">
     <div class="logo" />
     <a-menu class="menu" theme="dark" mode="horizontal">
-      <a-menu-item>Movies</a-menu-item>
-      <a-menu-item>Directors</a-menu-item>
-      <a-menu-item>Actors</a-menu-item>
+      <a-menu-item>
+        <n-link to="/movies">
+          Movies
+        </n-link>
+      </a-menu-item>
+      <a-menu-item>
+        <n-link to="/directors">
+          Directors
+        </n-link>
+      </a-menu-item>
+      <a-menu-item>
+        <n-link to="/actors">
+          Actors
+        </n-link>
+      </a-menu-item>
     </a-menu>
   </a-layout-header>
 </template>
