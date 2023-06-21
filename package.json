@@ -19,7 +19,7 @@
     "ant-design-vue": "^1.1.10",
     "devour-client": "^2.0.27",
     "fuse.js": "^3.4.5",
-    "nuxt": "^2.0.0",
+    "nuxt": "^3.4.3",
     "vue-fuse": "^2.1.0"
   },
   "devDependencies": {
